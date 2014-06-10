@@ -127,4 +127,26 @@ module Cannon
       #???
     end
   end
+
+  # 4.3.3 Gamma Distributions
+  def gamma(nu)
+    sum = 1.0
+    nu.times do
+      sum *= random
+    end
+    -Math.log(sum)
+  end
+
+  #4.3.4 First Law of Laplace
+  def plapla(xmu, tau)
+    u = random * 2.0
+    if u > 1.0
+      u = 2.0 - u
+      -tau * Math.log(u) + xmu
+    else
+      tau * Math.log(u) + xmu
+    end
+  end
+
+
 end
