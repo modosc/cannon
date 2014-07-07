@@ -3,6 +3,61 @@ require_relative '../../test_helper'
 describe Cannon do
   include Cannon
 
+  # todo - how do you test random distributions?
+  describe "when using logistic" do
+    it "must work" do
+      h = {}
+      10000.times do
+        j = logistic(4, -2).round
+        if h[j].nil?
+          h[j] = 1
+        else
+          h[j] += 1
+        end
+      end
+      puts "logistic: #{h.sort.to_h.inspect}"
+    end
+  end
+
+  describe "when using hypberbolic_cos" do
+    it "must work" do
+      h = {}
+      10000.times do
+        j = hyperbolic_cos.round
+        if h[j].nil?
+          h[j] = 1
+        else
+          h[j] += 1
+        end
+      end
+      puts "hypberbolic_cos: #{h.sort.to_h.inspect}"
+    end
+  end
+
+  describe "when using cauchy" do
+    it "must work" do
+      h = {}
+      i = {}
+      10000.times do
+        j = cauchy(1).round
+        k = cauchy(1, true).round
+        if h[j].nil?
+          h[j] = 1
+        else
+          h[j] += 1
+        end
+        if i[k].nil?
+          i[k] = 1
+        else
+          i[k] += 1
+        end
+      end
+      puts "cauchy: #{h.sort.to_h.inspect}"
+      puts "cauchy: #{i.sort.to_h.inspect}"
+    end
+  end
+
+
   describe "when using plapla" do
     it "must work" do
       h = {}

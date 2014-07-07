@@ -137,7 +137,7 @@ module Cannon
     -Math.log(sum)
   end
 
-  #4.3.4 First Law of Laplace
+  # 4.3.4 First Law of Laplace
   def plapla(xmu, tau)
     u = random * 2.0
     if u > 1.0
@@ -148,5 +148,23 @@ module Cannon
     end
   end
 
+  # 4.3.5 Cauchy distribution
+  def cauchy(tau, iopt=nil)
+    u = random
+    (u /= 2.0) if iopt
+    u *= Math::PI
+    tau * Math.tan(u)
+  end
+
+  # 4.3.6 Hyperbolic Cosine Distribution
+  def hyperbolic_cos
+    Math.log(Math.tan(Math::PI * random / 2))
+  end
+
+  # 4.3.7 Logistic Distribution
+  # mean is -beta/alpha, mode is alpha/4
+  def logistic(alpha, beta)
+    ( -beta - Math.log(1/random - 1) ) / alpha
+  end
 
 end
