@@ -1,5 +1,4 @@
 require_relative '../../test_helper'
-require "gnuplot"
 
 describe Cannon do
   include Cannon
